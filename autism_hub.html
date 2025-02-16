@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Autism Hub - The Autism Network Canada</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #e6f3ff;
+            color: #1a2a3a;
+            min-height: 100vh;
+        }
+
+        .navbar {
+            background-color: #ffffff;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            border-radius: 15px;
+            margin: 1rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .logo-image img {
+            width: 120px;
+            height: auto;
+            object-fit: contain;
+            border-radius: 10px;
+        }
+
+        .logo-text {
+            display: flex;
+            gap: 0.8rem;
+            font-family: 'sans-serif', sans-serif;
+            font-size: 1.6rem;
+            font-weight: 600;
+            color: #1a2a3a;
+            letter-spacing: 0.8px;
+        }
+
+        .main-content {
+            text-align: center;
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .title {
+            font-size: 4rem;
+            margin-bottom: 2rem;
+            color: #2c5364;
+            font-weight: 700;
+        }
+
+        .dropdown-container {
+            display: flex;
+            justify-content: center;
+            gap: 4rem;
+            margin-top: 3rem;
+        }
+
+        .dropdown-section {
+            width: 400px;
+            text-align: left;
+        }
+
+        .dropdown-label {
+            font-size: 1.8rem;
+            color: #34617a;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .custom-select {
+            position: relative;
+            width: 100%;
+        }
+
+        .select-button {
+            width: 100%;
+            padding: 1.2rem;
+            background-color: #2c5364;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            text-align: left;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .select-button:hover {
+            background-color: #34617a;
+        }
+
+        .select-options {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background-color: white;
+            border-radius: 10px;
+            margin-top: 0.5rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            display: none;
+            z-index: 1000;
+        }
+
+        .option {
+            padding: 1rem;
+            cursor: pointer;
+            color: #1a2a3a;
+            transition: background-color 0.2s;
+        }
+
+        .option:hover {
+            background-color: #e0eaf5;
+        }
+
+        .show {
+            display: block;
+        }
+
+        .description {
+            font-size: 1.2rem;
+            color: #3f729b;
+            margin: 2rem auto;
+            max-width: 800px;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-top">
+            <div class="logo">
+                <div class="logo-image">
+                    <img src="https://raw.githubusercontent.com/DaisyYuan810/Hackie/main/The%20Logo.jpeg" alt="The Autism Network Canada Logo">
+                </div>
+                <div class="logo-text">The Autism Network Canada</div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <h1 class="title">Autism Hub</h1>
+        <p class="description">
+            Welcome to our Autism Hub. Select your role and what you're looking for to find personalized resources and support.
+        </p>
+
+        <div class="dropdown-container">
+            <div class="dropdown-section">
+                <h2 class="dropdown-label">I am a...</h2>
+                <div class="custom-select">
+                    <button class="select-button" onclick="toggleDropdown('role-options')">Select your role</button>
+                    <div class="select-options" id="role-options">
+                        <div class="option">A person with autism</div>
+                        <div class="option">A parent or caregiver of someone with autism</div>
+                        <div class="option">A healthcare professional</div>
+                        <div class="option">An educator or school staff</div>
+                        <div class="option">An autism specialist</div>
+                        <div class="option">A person wanting to learn more about autism</div>
+                        <div class="option">An employer supporting autistic employees</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dropdown-section">
+                <h2 class="dropdown-label">Looking for...</h2>
+                <div class="custom-select">
+                    <button class="select-button" onclick="toggleDropdown('resource-options')">Select resources</button>
+                    <div class="select-options" id="resource-options">
+                        <div class="option">Diagnosis and assessment resources</div>
+                        <div class="option">Therapy and counseling support</div>
+                        <div class="option">Social skills programs</div>
+                        <div class="option">Educational tools and resources</div>
+                        <div class="option">Sensory-friendly products and environments</div>
+                        <div class="option">Employment support and workplace accommodations</div>
+                        <div class="option">Legal and financial assistance for autism-related needs</div>
+                        <div class="option">Community support groups and peer connections</div>
+                        <div class="option">Research and training materials for professionals</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        function toggleDropdown(id) {
+            const dropdowns = document.getElementsByClassName('select-options');
+            for (let dropdown of dropdowns) {
+                if (dropdown.id !== id) {
+                    dropdown.classList.remove('show');
+                }
+            }
+            
+            document.getElementById(id).classList.toggle('show');
+        }
+
+        // Close dropdowns when clicking outside
+        window.onclick = function(event) {
+            if (!event.target.matches('.select-button')) {
+                const dropdowns = document.getElementsByClassName('select-options');
+                for (let dropdown of dropdowns) {
+                    if (dropdown.classList.contains('show')) {
+                        dropdown.classList.remove('show');
+                    }
+                }
+            }
+        }
+
+        // Update button text when option is selected
+        const options = document.getElementsByClassName('option');
+        for (let option of options) {
+            option.addEventListener('click', function() {
+                const button = this.parentElement.previousElementSibling;
+                button.textContent = this.textContent;
+                this.parentElement.classList.remove('show');
+            });
+        }
+    </script>
+</body>
+</html> 
